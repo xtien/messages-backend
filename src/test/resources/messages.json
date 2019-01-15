@@ -1,0 +1,23 @@
+{
+  "resultCode": 0,
+  "messages": [
+    {
+      "id": 1,
+      "status": 3,
+      "header": "test bericht 3",
+      "text": "test bericht 3 en dan nog veel meer tekst"
+    },
+    {
+      "id": 2,
+      "status": 2,
+      "header": "test bericht 2",
+      "text": "test bericht 2 en dan nog veel meer tekst"
+    },
+    {
+      "id": 3,
+      "status": 1,
+      "header": "test bericht 1",
+      "text": "test bericht 1 en dan nog veel meer tekst"
+    }
+  ]
+}
