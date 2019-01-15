@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
-@CrossOrigin(origins = Application.UI_HOST)
 public class DeleteMessageController {
 
     Logger logger = Logger.getLogger(DeleteMessageController.class);
@@ -23,7 +22,7 @@ public class DeleteMessageController {
     @Autowired
     private MessageService messageService;
 
-    @CrossOrigin(origins = Application.UI_HOST)
+    @CrossOrigin(origins = {Application.UI_HOST_LOCAL,Application.UI_HOST_REMOTE})
     @PostMapping(value = "/deleteMessage/")
     public ResponseEntity<DeleteMessageResult> addMessage(@RequestBody DeleteMessageRequest request) {
 

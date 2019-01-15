@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestBody;
  * Date: 12/29/18 12:41 PM
  */
 @Controller
-@CrossOrigin(origins = Application.UI_HOST)
 public class UpdateMessageController {
 
     Logger logger = Logger.getLogger(UpdateMessageController.class);
@@ -26,7 +25,7 @@ public class UpdateMessageController {
     @Autowired
     private MessageService messageService;
 
-    @CrossOrigin(origins = Application.UI_HOST)
+    @CrossOrigin(origins = {Application.UI_HOST_LOCAL,Application.UI_HOST_REMOTE})
     @PostMapping(value = "/updateMessage/")
     public ResponseEntity<MessageResult> updateMessage(@RequestBody UpdateMessageRequest request) {
 

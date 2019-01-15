@@ -19,7 +19,8 @@ import org.springframework.context.annotation.ImportResource;
 @ImportResource("classpath:applicationContext.xml")
 public class Application {
 
-    public static final String UI_HOST = "http://pengo.christine.nl:3000";
+    public static final String UI_HOST_LOCAL = "http://pengo.christine.nl:3000";
+    public static final String UI_HOST_REMOTE = "http://www.loqli.com";
 
     public static void main(String[] args) {
 

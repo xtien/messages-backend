@@ -16,6 +16,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+import static java.time.LocalDate.now;
+
 public class MessageServiceImpl implements MessageService {
 
     @Autowired
@@ -45,6 +47,7 @@ public class MessageServiceImpl implements MessageService {
                 existingMessage.setHeader(message.getHeader());
                 existingMessage.setText(message.getText());
                 existingMessage.setStatus(message.getStatus());
+                existingMessage.setDateEntered(now());
             }
             result = 0;
         } catch (Exception e) {
@@ -59,6 +62,7 @@ public class MessageServiceImpl implements MessageService {
         if (message.hasId()) {
             return updateMessage(message);
         } else {
+            message.setDateEntered(now());
             return messageDao.create(message);
         }
     }

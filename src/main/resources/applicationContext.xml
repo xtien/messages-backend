@@ -54,25 +54,12 @@
 
     <util:properties id="props">
         <prop key="hibernate.show_sql">true</prop>
-        <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
+        <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQL82Dialect</prop>
         <prop key="hibernate.hbm2ddl.auto">${database.createorvalidate}</prop>
         <prop key="hibernate.ddl-auto">${database.createorvalidate}</prop>
         <prop key="spring.jpa.show-sql">true</prop>
         <prop key="spring.jpa.generate.ddl">true</prop>
         <prop key="spring.jpa.hibernate.ddl-auto">${database.createorvalidate}</prop>
-        <prop key="spring.datasource.initialization-mode">always</prop>
-        <prop key="spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation">true</prop>
-    </util:properties>
-
-    <util:properties id="importprops">
-        <prop key="hibernate.show_sql">true</prop>
-        <prop key="hibernate.id.new_generator_mappings">false</prop>
-        <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
-        <prop key="hibernate.hbm2ddl.auto">${database.import.createorvalidate}</prop>
-        <prop key="hibernate.ddl-auto">${database.import.createorvalidate}</prop>
-        <prop key="spring.jpa.show-sql">true</prop>
-        <prop key="spring.jpa.generate.ddl">true</prop>
-        <prop key="spring.jpa.hibernate.ddl-auto">${database.import.createorvalidate}</prop>
         <prop key="spring.datasource.initialization-mode">always</prop>
         <prop key="spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation">true</prop>
     </util:properties>

@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
-@CrossOrigin(origins = Application.UI_HOST)
 public class GetMessageController {
 
     Logger logger = Logger.getLogger(GetMessageController.class);
@@ -24,7 +23,7 @@ public class GetMessageController {
     @Autowired
     private MessageService messageService;
 
-    @CrossOrigin(origins = Application.UI_HOST)
+    @CrossOrigin(origins = {Application.UI_HOST_LOCAL,Application.UI_HOST_REMOTE})
     @PostMapping(value = "/getMessage/")
     public ResponseEntity<MessageResult> getMessage(@RequestBody MessageRequest request) {
 

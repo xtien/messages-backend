@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 
 @Controller
-@CrossOrigin(origins = Application.UI_HOST)
 public class GetMessagesController {
 
     Logger logger = Logger.getLogger(GetMessagesController.class);
@@ -25,7 +24,7 @@ public class GetMessagesController {
     @Autowired
     private MessageService messageService;
 
-    @CrossOrigin(origins = Application.UI_HOST)
+    @CrossOrigin(origins = {Application.UI_HOST_LOCAL,Application.UI_HOST_REMOTE})
     @PostMapping(value = "/getMessages/")
     public ResponseEntity<MessagesResult> getMessages(@RequestBody MessagesRequest request) {
 
@@ -39,7 +38,7 @@ public class GetMessagesController {
 
         } catch (Exception e) {
            logger.error(e);
-         }
+        }
 
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
