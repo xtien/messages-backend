@@ -29,9 +29,9 @@ public class Message {
     private static final String STATUS = "status";
     private static final String TEXT = "text";
     private static final String HEADER = "header";
-    public static final String DATE_FROM = "date_from";
-    public static final String DATE_UNTIL = "date_to";
-    public static final String DATE_ENTERED = "date_entered";
+    public static final String DATE_FROM = "dateFrom";
+    public static final String DATE_UNTIL = "dateUntil";
+    public static final String DATE_ENTERED = "dateEntered";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,16 +51,10 @@ public class Message {
 
     @Column(name = DATE_FROM)
     @JsonProperty(DATE_FROM)
-    @JsonDeserialize(using = LocalDateDeserializer.class)
-    @JsonSerialize(using = LocalDateSerializer.class)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate dateFrom;
 
     @Column(name = DATE_UNTIL)
     @JsonProperty(DATE_UNTIL)
-    @JsonDeserialize(using = LocalDateDeserializer.class)
-    @JsonSerialize(using = LocalDateSerializer.class)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate dateUntil;
 
     @Column(name = DATE_ENTERED)
