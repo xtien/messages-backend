@@ -47,6 +47,8 @@ public class MessageServiceImpl implements MessageService {
                 existingMessage.setHeader(message.getHeader());
                 existingMessage.setText(message.getText());
                 existingMessage.setStatus(message.getStatus());
+                existingMessage.setDateFrom(message.getDateFrom());
+                existingMessage.setDateUntil(message.getDateUntil());
                 existingMessage.setDateEntered(now());
             }
             result = 0;

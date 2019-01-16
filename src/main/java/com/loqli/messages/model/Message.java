@@ -117,4 +117,20 @@ public class Message {
     public void setDateEntered(LocalDate now) {
         dateEntered = now;
     }
+
+    public void setDateFrom(LocalDate from) {
+        dateFrom = from;
+    }
+
+    public void setDateUntil(LocalDate until) {
+        dateUntil = until;
+    }
+
+    public LocalDate getDateFrom() {
+        return dateFrom;
+    }
+
+    public LocalDate getDateUntil() {
+        return dateUntil;
+    }
 }

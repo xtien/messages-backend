@@ -10,8 +10,6 @@ import java.util.Date;
 import java.util.Properties;
 
 public class CommunicationProperties {
-    public static final String RELOAD_NL = "reload_nl_motogymkhana";
-    public static final String RELOAD_EU = "reload_eu_motogymkhana";
 
     private static final Logger log = Logger.getLogger(CommunicationProperties.class);
 

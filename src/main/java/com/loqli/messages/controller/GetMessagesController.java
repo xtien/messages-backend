@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -25,8 +26,8 @@ public class GetMessagesController {
     private MessageService messageService;
 
     @CrossOrigin(origins = {Application.UI_HOST_LOCAL,Application.UI_HOST_REMOTE})
-    @PostMapping(value = "/getMessages/")
-    public ResponseEntity<MessagesResult> getMessages(@RequestBody MessagesRequest request) {
+    @GetMapping(value = "/getMessages/")
+    public ResponseEntity<MessagesResult> getMessages() {
 
         MessagesResult result = new MessagesResult();
 

@@ -20,7 +20,7 @@ import org.springframework.context.annotation.ImportResource;
 public class Application {
 
     public static final String UI_HOST_LOCAL = "http://pengo.christine.nl:3000";
-    public static final String UI_HOST_REMOTE = "http://www.loqli.com";
+    public static final String UI_HOST_REMOTE = "https://www.loqli.com";
 
     public static void main(String[] args) {
 
