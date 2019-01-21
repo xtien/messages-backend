@@ -36,7 +36,7 @@ public class TestGetMessages {
         Assert.assertEquals(HttpStatus.OK, addMessageResult.getStatusCode());
 
         MessagesRequest request = new MessagesRequest();
-        ResponseEntity<MessagesResult> response = getMessagesController.getMessages(request);
+        ResponseEntity<MessagesResult> response = getMessagesController.getMessages();
         MessagesResult result = response.getBody();
 
         Assert.assertNotNull(result);
