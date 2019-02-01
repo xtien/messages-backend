@@ -1,3 +1,13 @@
+/*
+ * Zaphod Consulting BV demo notification system
+ * Copyright (c) 2019, Zaphod Consulting BV, Christine Karman
+ * mailto: christine AT christine DOT nl
+ * This project is free software: you can redistribute it and/or modify it
+ * under the terms of the Apache License, Version 2.0.
+ * You can find a copy of the license at
+ * http://www. apache.org/licenses/LICENSE-2.0.
+ */
+
 package com.loqli.messages.test.live;
 
 import com.loqli.messages.controller.result.MessageResult;
@@ -5,7 +15,6 @@ import com.loqli.messages.controller.AddMessageController;
 import com.loqli.messages.controller.GetMessageController;
 import com.loqli.messages.controller.request.AddMessageRequest;
 import com.loqli.messages.controller.request.MessageRequest;
-import com.loqli.messages.controller.request.MessagesRequest;
 import com.loqli.messages.model.Message;
 import org.junit.Assert;
 import org.junit.Test;
@@ -36,7 +45,6 @@ public class TestGetMessage {
         addMessageRequest2.setMessage(new Message(2, "test bericht 2"));
         Assert.assertEquals(HttpStatus.OK, addMessageController.addMessage(addMessageRequest2).getStatusCode());
 
-        MessagesRequest request = new MessagesRequest();
         ResponseEntity<MessageResult> response = getMessageController.getMessage(new MessageRequest(2));
         MessageResult result = response.getBody();
 

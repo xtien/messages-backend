@@ -1,3 +1,13 @@
+/*
+ * Zaphod Consulting BV demo notification system
+ * Copyright (c) 2019, Zaphod Consulting BV, Christine Karman
+ * mailto: christine AT christine DOT nl
+ * This project is free software: you can redistribute it and/or modify it
+ * under the terms of the Apache License, Version 2.0.
+ * You can find a copy of the license at
+ * http://www. apache.org/licenses/LICENSE-2.0.
+ */
+
 package com.loqli.messages.dao.impl;
 
 import com.loqli.messages.dao.MessageDao;
@@ -51,7 +61,7 @@ public class MessageDaoImpl implements MessageDao {
                 deleteMessage(l.getId());
             }
         } catch (Exception e) {
-            logger.error(e);
+            logger.error("Error deleting messages", e);
             return -1;
         }
 
@@ -71,7 +81,7 @@ public class MessageDaoImpl implements MessageDao {
                 result = 0;
             }
         } catch (Exception e) {
-            logger.error(e);
+            logger.error("Error deleting message", e);
         }
 
         return result;

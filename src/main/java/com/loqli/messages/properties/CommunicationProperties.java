@@ -1,3 +1,13 @@
+/*
+ * Zaphod Consulting BV demo notification system
+ * Copyright (c) 2019, Zaphod Consulting BV, Christine Karman
+ * mailto: christine AT christine DOT nl
+ * This project is free software: you can redistribute it and/or modify it
+ * under the terms of the Apache License, Version 2.0.
+ * You can find a copy of the license at
+ * http://www. apache.org/licenses/LICENSE-2.0.
+ */
+
 package com.loqli.messages.properties;
 
 import com.loqli.messages.ServerConstants;
@@ -5,7 +15,13 @@ import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.commons.lang3.time.FastDateFormat;
 import org.apache.log4j.Logger;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Date;
 import java.util.Properties;
 
@@ -14,12 +30,12 @@ public class CommunicationProperties {
     private static final Logger log = Logger.getLogger(CommunicationProperties.class);
 
     private static Properties properties;
-    private static String path;
+    private static String pathString;
     private static FastDateFormat dateFormat = FastDateFormat.getInstance("yyyy/MM/dd hh:mm");
 
     private static boolean propertiesRead = false;
 
-    public CommunicationProperties(){
+    public CommunicationProperties() {
         // empty, needed for deserialization
     }
 
@@ -32,22 +48,20 @@ public class CommunicationProperties {
 
     private static void readProperties() {
 
-        path = "/home/christine" + File.separator + ServerConstants.settings_properties_file;
-
-        File settingsFile = new File(path);
-
+        pathString = "/home/christine" + File.separator + ServerConstants.settings_properties_file;
+        Path path = Paths.get(pathString);
         properties = new Properties();
 
-        if (settingsFile.exists()) {
+        if (Files.exists(path)) {
 
             try {
 
-                InputStream is = new FileInputStream(settingsFile);
+                InputStream is = java.nio.file.Files.newInputStream(path);
 
                 properties.load(is);
 
             } catch (IOException e) {
-                log.error(e);
+                log.error("Error reading properties", e);
             }
         }
         for (Object key : properties.keySet()) {
@@ -65,32 +79,5 @@ public class CommunicationProperties {
 
     public static String getProperty(String key) {
         return properties.getProperty(key);
-    }
-
-    public static int getIntProperty(String key) {
-        String stringProp = getProperty(key);
-        int result = -1;
-        if (NumberUtils.isCreatable(stringProp)) {
-            result = NumberUtils.toInt(stringProp);
-        }
-        return result;
-    }
-
-    public static boolean getBooleanProperty(String key) {
-        String stringProp = getProperty(key);
-        return Boolean.parseBoolean(stringProp);
-    }
-
-    public static void setBooleanProperty(String key, boolean b) {
-        properties.setProperty(key, b ? "true" : "false");
-    }
-
-    public static void save() {
-
-        try ( FileOutputStream fos = new FileOutputStream(new File(path));){
-            properties.store(fos, "** " + dateFormat.format(new Date()));
-        } catch (IOException e) {
-            log.error(e);
-        }
     }
 }
